@@ -1,0 +1,28 @@
+# Ignore Python environment directories
+venv/
+.venv/
+
+# Ignore the IDE specific files (e.g., for VSCode)
+.vscode/
+
+# Ignore compiled Python files
+__pycache__/
+*.pyc
+*.pyo
+
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore environment files
+.env
+.env.*
+
+# Ignore Docker-related files if present
+docker-compose.override.yml
+.docker/
+
+# Ignore system-specific files
+.DS_Store
+Thumbs.db
+
+
