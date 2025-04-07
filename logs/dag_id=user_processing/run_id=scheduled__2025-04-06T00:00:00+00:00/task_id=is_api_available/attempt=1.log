@@ -1,0 +1,81 @@
+[2025-04-07T00:14:15.209+0000] {taskinstance.py:1165} INFO - Dependencies all met for <TaskInstance: user_processing.is_api_available scheduled__2025-04-06T00:00:00+00:00 [queued]>
+[2025-04-07T00:14:15.230+0000] {taskinstance.py:1165} INFO - Dependencies all met for <TaskInstance: user_processing.is_api_available scheduled__2025-04-06T00:00:00+00:00 [queued]>
+[2025-04-07T00:14:15.231+0000] {taskinstance.py:1362} INFO - 
+--------------------------------------------------------------------------------
+[2025-04-07T00:14:15.235+0000] {taskinstance.py:1363} INFO - Starting attempt 1 of 1
+[2025-04-07T00:14:15.236+0000] {taskinstance.py:1364} INFO - 
+--------------------------------------------------------------------------------
+[2025-04-07T00:14:15.264+0000] {taskinstance.py:1383} INFO - Executing <Task(HttpSensor): is_api_available> on 2025-04-06 00:00:00+00:00
+[2025-04-07T00:14:15.279+0000] {standard_task_runner.py:55} INFO - Started process 7206 to run task
+[2025-04-07T00:14:15.318+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'user_processing', 'is_api_available', 'scheduled__2025-04-06T00:00:00+00:00', '--job-id', '146', '--raw', '--subdir', 'DAGS_FOLDER/user_processing.py', '--cfg-path', '/tmp/tmpoxaduvn8']
+[2025-04-07T00:14:15.342+0000] {standard_task_runner.py:83} INFO - Job 146: Subtask is_api_available
+[2025-04-07T00:14:15.608+0000] {task_command.py:376} INFO - Running <TaskInstance: user_processing.is_api_available scheduled__2025-04-06T00:00:00+00:00 [running]> on host fae2b1eff5d6
+[2025-04-07T00:14:15.837+0000] {taskinstance.py:1592} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=user_processing
+AIRFLOW_CTX_TASK_ID=is_api_available
+AIRFLOW_CTX_EXECUTION_DATE=2025-04-06T00:00:00+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2025-04-06T00:00:00+00:00
+[2025-04-07T00:14:15.845+0000] {http.py:120} INFO - Poking: api/
+[2025-04-07T00:14:15.892+0000] {base.py:71} INFO - Using connection ID 'user_api' for task execution.
+[2025-04-07T00:14:15.913+0000] {http.py:148} INFO - Sending 'GET' to url: https://randomuser.me/api/
+[2025-04-07T00:14:16.025+0000] {http.py:206} WARNING - HTTPSConnectionPool(host='randomuser.me', port=443): Max retries exceeded with url: /api/ (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0xffff7b230dd0>: Failed to establish a new connection: [Errno -2] Name or service not known')) Tenacity will retry to execute the operation
+[2025-04-07T00:14:16.028+0000] {taskinstance.py:1851} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/connection.py", line 175, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/util/connection.py", line 72, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+  File "/usr/local/lib/python3.7/socket.py", line 752, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno -2] Name or service not known
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 710, in urlopen
+    chunked=chunked,
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 386, in _make_request
+    self._validate_conn(conn)
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 1042, in _validate_conn
+    conn.connect()
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/connection.py", line 358, in connect
+    self.sock = conn = self._new_conn()
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/connection.py", line 187, in _new_conn
+    self, "Failed to establish a new connection: %s" % e
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPSConnection object at 0xffff7b230dd0>: Failed to establish a new connection: [Errno -2] Name or service not known
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/requests/adapters.py", line 499, in send
+    timeout=timeout,
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 788, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/util/retry.py", line 592, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='randomuser.me', port=443): Max retries exceeded with url: /api/ (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0xffff7b230dd0>: Failed to establish a new connection: [Errno -2] Name or service not known'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/sensors/base.py", line 189, in execute
+    poke_return = self.poke(context)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/providers/http/sensors/http.py", line 126, in poke
+    extra_options=self.extra_options,
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/providers/http/hooks/http.py", line 149, in run
+    return self.run_and_check(session, prepped_request, extra_options)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/providers/http/hooks/http.py", line 207, in run_and_check
+    raise ex
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/providers/http/hooks/http.py", line 199, in run_and_check
+    response = session.send(prepped_request, **send_kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/requests/sessions.py", line 701, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/requests/adapters.py", line 565, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='randomuser.me', port=443): Max retries exceeded with url: /api/ (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0xffff7b230dd0>: Failed to establish a new connection: [Errno -2] Name or service not known'))
+[2025-04-07T00:14:16.053+0000] {taskinstance.py:1406} INFO - Marking task as FAILED. dag_id=user_processing, task_id=is_api_available, execution_date=20250406T000000, start_date=20250407T001415, end_date=20250407T001416
+[2025-04-07T00:14:16.062+0000] {standard_task_runner.py:105} ERROR - Failed to execute job 146 for task is_api_available (HTTPSConnectionPool(host='randomuser.me', port=443): Max retries exceeded with url: /api/ (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0xffff7b230dd0>: Failed to establish a new connection: [Errno -2] Name or service not known')); 7206)
+[2025-04-07T00:14:16.081+0000] {local_task_job.py:164} INFO - Task exited with return code 1
+[2025-04-07T00:14:16.142+0000] {local_task_job.py:273} INFO - 0 downstream tasks scheduled from follow-on schedule check

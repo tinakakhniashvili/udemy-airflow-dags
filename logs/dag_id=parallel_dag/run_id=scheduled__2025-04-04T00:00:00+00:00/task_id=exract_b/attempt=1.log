@@ -1,0 +1,27 @@
+[2025-04-05T20:49:50.533+0000] {taskinstance.py:1165} INFO - Dependencies all met for <TaskInstance: parallel_dag.exract_b scheduled__2025-04-04T00:00:00+00:00 [queued]>
+[2025-04-05T20:49:50.540+0000] {taskinstance.py:1165} INFO - Dependencies all met for <TaskInstance: parallel_dag.exract_b scheduled__2025-04-04T00:00:00+00:00 [queued]>
+[2025-04-05T20:49:50.541+0000] {taskinstance.py:1362} INFO - 
+--------------------------------------------------------------------------------
+[2025-04-05T20:49:50.541+0000] {taskinstance.py:1363} INFO - Starting attempt 1 of 1
+[2025-04-05T20:49:50.541+0000] {taskinstance.py:1364} INFO - 
+--------------------------------------------------------------------------------
+[2025-04-05T20:49:50.555+0000] {taskinstance.py:1383} INFO - Executing <Task(BashOperator): exract_b> on 2025-04-04 00:00:00+00:00
+[2025-04-05T20:49:50.562+0000] {standard_task_runner.py:55} INFO - Started process 116 to run task
+[2025-04-05T20:49:50.566+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'parallel_dag', 'exract_b', 'scheduled__2025-04-04T00:00:00+00:00', '--job-id', '80', '--raw', '--subdir', 'DAGS_FOLDER/parallel_dag.py', '--cfg-path', '/tmp/tmpwqjto8ub']
+[2025-04-05T20:49:50.567+0000] {standard_task_runner.py:83} INFO - Job 80: Subtask exract_b
+[2025-04-05T20:49:50.651+0000] {task_command.py:376} INFO - Running <TaskInstance: parallel_dag.exract_b scheduled__2025-04-04T00:00:00+00:00 [running]> on host 8545ef973b24
+[2025-04-05T20:49:50.728+0000] {taskinstance.py:1592} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=parallel_dag
+AIRFLOW_CTX_TASK_ID=exract_b
+AIRFLOW_CTX_EXECUTION_DATE=2025-04-04T00:00:00+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2025-04-04T00:00:00+00:00
+[2025-04-05T20:49:50.730+0000] {subprocess.py:63} INFO - Tmp dir root location: 
+ /tmp
+[2025-04-05T20:49:50.730+0000] {subprocess.py:75} INFO - Running command: ['/bin/bash', '-c', 'sleep 10']
+[2025-04-05T20:49:50.745+0000] {subprocess.py:86} INFO - Output:
+[2025-04-05T20:50:00.752+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2025-04-05T20:50:00.786+0000] {taskinstance.py:1406} INFO - Marking task as SUCCESS. dag_id=parallel_dag, task_id=exract_b, execution_date=20250404T000000, start_date=20250405T204950, end_date=20250405T205000
+[2025-04-05T20:50:00.812+0000] {local_task_job.py:164} INFO - Task exited with return code 0
+[2025-04-05T20:50:00.835+0000] {local_task_job.py:273} INFO - 0 downstream tasks scheduled from follow-on schedule check
