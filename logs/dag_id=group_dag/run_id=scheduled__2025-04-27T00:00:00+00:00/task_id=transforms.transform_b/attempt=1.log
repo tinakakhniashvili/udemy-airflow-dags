@@ -1,0 +1,27 @@
+[2025-04-28T10:36:07.917+0000] {taskinstance.py:1165} INFO - Dependencies all met for <TaskInstance: group_dag.transforms.transform_b scheduled__2025-04-27T00:00:00+00:00 [queued]>
+[2025-04-28T10:36:07.926+0000] {taskinstance.py:1165} INFO - Dependencies all met for <TaskInstance: group_dag.transforms.transform_b scheduled__2025-04-27T00:00:00+00:00 [queued]>
+[2025-04-28T10:36:07.927+0000] {taskinstance.py:1362} INFO - 
+--------------------------------------------------------------------------------
+[2025-04-28T10:36:07.927+0000] {taskinstance.py:1363} INFO - Starting attempt 1 of 1
+[2025-04-28T10:36:07.927+0000] {taskinstance.py:1364} INFO - 
+--------------------------------------------------------------------------------
+[2025-04-28T10:36:07.944+0000] {taskinstance.py:1383} INFO - Executing <Task(BashOperator): transforms.transform_b> on 2025-04-27 00:00:00+00:00
+[2025-04-28T10:36:07.990+0000] {standard_task_runner.py:55} INFO - Started process 247 to run task
+[2025-04-28T10:36:07.998+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'group_dag', 'transforms.transform_b', 'scheduled__2025-04-27T00:00:00+00:00', '--job-id', '269', '--raw', '--subdir', 'DAGS_FOLDER/group_dag.py', '--cfg-path', '/tmp/tmpcffog6ij']
+[2025-04-28T10:36:08.001+0000] {standard_task_runner.py:83} INFO - Job 269: Subtask transforms.transform_b
+[2025-04-28T10:36:08.095+0000] {task_command.py:376} INFO - Running <TaskInstance: group_dag.transforms.transform_b scheduled__2025-04-27T00:00:00+00:00 [running]> on host fae2b1eff5d6
+[2025-04-28T10:36:08.161+0000] {taskinstance.py:1592} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=group_dag
+AIRFLOW_CTX_TASK_ID=transforms.transform_b
+AIRFLOW_CTX_EXECUTION_DATE=2025-04-27T00:00:00+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2025-04-27T00:00:00+00:00
+[2025-04-28T10:36:08.163+0000] {subprocess.py:63} INFO - Tmp dir root location: 
+ /tmp
+[2025-04-28T10:36:08.164+0000] {subprocess.py:75} INFO - Running command: ['/bin/bash', '-c', 'sleep 10']
+[2025-04-28T10:36:08.174+0000] {subprocess.py:86} INFO - Output:
+[2025-04-28T10:36:18.184+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2025-04-28T10:36:18.239+0000] {taskinstance.py:1406} INFO - Marking task as SUCCESS. dag_id=group_dag, task_id=transforms.transform_b, execution_date=20250427T000000, start_date=20250428T103607, end_date=20250428T103618
+[2025-04-28T10:36:18.276+0000] {local_task_job.py:164} INFO - Task exited with return code 0
+[2025-04-28T10:36:18.292+0000] {local_task_job.py:273} INFO - 0 downstream tasks scheduled from follow-on schedule check
